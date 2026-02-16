@@ -3,13 +3,8 @@ FROM gpt-oss:20b
 TEMPLATE """<|start|>system<|message|>You are ChatGPT, a large language model trained by OpenAI.
 Knowledge cutoff: 2024-06
 Current date: {{ currentDate }}
-{{- if and .IsThinkSet .Think (ne .ThinkLevel "") }}
-
-Reasoning: {{ .ThinkLevel }}
-{{- else if or (not .IsThinkSet) (and .IsThinkSet .Think) }}
 
 Reasoning: high
-{{- end }}
 
 {{- $hasNonBuiltinTools := false }}
 {{- if .Tools -}}
@@ -173,4 +168,5 @@ type {{ .Function.Name }} = () => any;
 {{- if not (or $prefillingContent $prefillingThinkingOnly) -}}
 <|start|>assistant
 {{- end -}}"""
+
 PARAMETER temperature 0.7
