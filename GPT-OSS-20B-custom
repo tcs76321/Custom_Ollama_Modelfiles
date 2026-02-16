@@ -11,8 +11,6 @@ Reasoning: {{ .ThinkLevel }}
 Reasoning: high
 {{- end }}
 
-PARAMETER temperature 0.6
-
 {{- $hasNonBuiltinTools := false }}
 {{- if .Tools -}}
 {{- $hasBrowserSearch := false }}
@@ -175,3 +173,4 @@ type {{ .Function.Name }} = () => any;
 {{- if not (or $prefillingContent $prefillingThinkingOnly) -}}
 <|start|>assistant
 {{- end -}}"""
+PARAMETER temperature 0.7
